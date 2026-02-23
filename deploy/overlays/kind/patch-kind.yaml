@@ -1,0 +1,14 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: hello-world-api-go
+  namespace: hello-world-api-go
+spec:
+  replicas: 1
+  template:
+    spec:
+      containers:
+        - name: hello-world-api-go
+          env:
+            - name: ENV
+              value: kind

@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: hello-world-api-go
+  namespace: hello-world-api-go
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: hello-world-api-go
+  template:
+    metadata:
+      labels:
+        app: hello-world-api-go
+    spec:
+      containers:
+        - name: hello-world-api-go
+          image: ghcr.io/solthoth/hello-world-api.go:latest
+          ports:
+            - name: http
+              containerPort: 8080
+          readinessProbe:
+            httpGet:
+              path: /health
+              port: http
+            initialDelaySeconds: 5
+            periodSeconds: 10
+          livenessProbe:
+            httpGet:
+              path: /health
+              port: http
+            initialDelaySeconds: 15
+            periodSeconds: 20
