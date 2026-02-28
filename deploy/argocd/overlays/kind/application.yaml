@@ -7,6 +7,7 @@ metadata:
 spec:
   destination:
     namespace: app-solthoth-hello-world-api-go
+    server: https://kubernetes.default.svc
   source:
     path: deploy/kustomize/overlays/kind
     repoURL: https://github.com/solthoth/hello-world-api.go.git
