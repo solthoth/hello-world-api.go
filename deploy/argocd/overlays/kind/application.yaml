@@ -1,0 +1,18 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  annotations:
+    notifications.argoproj.io/subscribe.cd-visibility-trigger.cd-visibility-webhook: ""
+  name: solthoth-hello-world-api-go
+spec:
+  destination:
+    namespace: app-solthoth-hello-world-api-go
+  source:
+    path: deploy/kustomize/overlays/kind
+    repoURL: https://github.com/solthoth/hello-world-api.go.git
+    targetRevision: main
+  project: kind-cluster
+  syncPolicy:
+    automated:
+      selfHeal: true
+      prune: true

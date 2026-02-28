@@ -1,0 +1,11 @@
+---
+apiVersion: v1
+kind: Secret
+metadata:
+  labels:
+    app.kubernetes.io/part-of: argocd
+    argocd.argoproj.io/secret-type: repository
+  name: argocd-repo-solthoth-hello-world-api-go
+stringData:
+  name: solthoth-hello-world-api-go
+  url: https://github.com/solthoth/hello-world-api.go.git
