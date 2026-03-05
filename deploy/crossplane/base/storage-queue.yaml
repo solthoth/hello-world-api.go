@@ -2,6 +2,7 @@ apiVersion: platform.solthoth.io/v1alpha1
 kind: StorageQueue
 metadata:
   name: hello-world-api-queue
+  namespace: app-solthoth-hello-world-api-go
 spec:
   # Pin the XR name so the Azure queue name is deterministic:
   # "<xr-name>-queue" = "hello-world-api-queue-queue"
