@@ -12,3 +12,12 @@ spec:
           env:
             - name: ENV
               value: kind
+            - name: AZURE_STORAGE_CONNECTION_STRING
+              valueFrom:
+                secretKeyRef:
+                  name: hello-world-api-queue-conn
+                  key: primaryQueueConnectionString
+            - name: AZURE_STORAGE_QUEUE_NAME
+              # Derived from the XR name (pinned via resourceRef below) + "-queue" suffix
+              # set by the composition. XR name = claim name = hello-world-api-queue.
+              value: hello-world-api-queue-queue

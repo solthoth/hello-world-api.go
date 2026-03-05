@@ -2,9 +2,14 @@ module github.com/solthoth/hello-world-api.go
 
 go 1.25.0
 
-require github.com/gin-gonic/gin v1.11.0
+require (
+	github.com/Azure/azure-sdk-for-go/sdk/storage/azqueue v1.0.1
+	github.com/gin-gonic/gin v1.11.0
+)
 
 require (
+	github.com/Azure/azure-sdk-for-go/sdk/azcore v1.18.0 // indirect
+	github.com/Azure/azure-sdk-for-go/sdk/internal v1.11.1 // indirect
 	github.com/bytedance/sonic v1.14.0 // indirect
 	github.com/bytedance/sonic/loader v0.3.0 // indirect
 	github.com/cloudwego/base64x v0.1.6 // indirect

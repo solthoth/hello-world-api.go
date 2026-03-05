@@ -8,10 +8,20 @@ A minimal Go REST API using [Gin](https://github.com/gin-gonic/gin), designed to
 
 ## Routes
 
-| Method | Path      | Description                  |
-|--------|-----------|------------------------------|
-| GET    | `/`       | Returns `{"message": "Hello, World!"}` |
-| GET    | `/health` | Returns `{"status": "ok"}` — used as a Kubernetes liveness probe |
+| Method | Path       | Description                  |
+|--------|------------|------------------------------|
+| GET    | `/`        | Returns `{"message": "Hello, World!"}` |
+| GET    | `/health`  | Returns `{"status": "ok"}` — used as a Kubernetes liveness probe |
+| POST   | `/message` | Publishes `{"message":"hello world","timestamp":"<utc>"}` to Azure Storage Queue; returns `202` with the same payload |
+
+## Environment Variables
+
+| Variable | Description |
+|---|---|
+| `AZURE_STORAGE_CONNECTION_STRING` | Azure Storage connection string — sourced from secret `hello-world-api-queue-conn` key `primaryQueueConnectionString` (Crossplane-provisioned) |
+| `AZURE_STORAGE_QUEUE_NAME` | Azure queue name — `hello-world-api-queue-queue` (XR name + `-queue` suffix from the composition) |
+
+If either variable is unset the app starts normally but `POST /message` returns `503`.
 
 ## Common Commands
 
