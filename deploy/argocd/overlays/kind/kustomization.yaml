@@ -6,3 +6,4 @@ namespace: argocd
 resources:
   - ../../base
   - application.yaml
+  - storage-queue-application.yaml

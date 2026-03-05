@@ -1,0 +1,16 @@
+apiVersion: platform.solthoth.io/v1alpha1
+kind: StorageQueue
+metadata:
+  name: hello-world-api-queue
+spec:
+  parameters:
+    # Azure region — update to match where your cluster resources live
+    location: westus2
+    # Must be globally unique, 3-24 chars, lowercase alphanumeric only (no hyphens)
+    storageAccountName: helloworldgo901a4ea49275
+    tier: Standard
+    replicationType: LRS
+  # Connection secret (primaryAccessKey, primaryQueueConnectionString)
+  # will be written to this secret in the claim's namespace
+  writeConnectionSecretToRef:
+    name: hello-world-api-queue-conn
