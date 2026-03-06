@@ -1,0 +1,25 @@
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: hello-world-api-go
+  description: Minimal Go REST API that publishes messages to an Azure Storage Queue, deployed on Kubernetes via ArgoCD.
+  annotations:
+    github.com/project-slug: solthoth/hello-world-api.go
+    argocd/app-name: solthoth-hello-world-api-go
+spec:
+  type: service
+  lifecycle: experimental
+  owner: group:default/guests
+  dependsOn:
+    - resource:default/hello-world-api-queue
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: Resource
+metadata:
+  name: hello-world-api-queue
+  description: Azure Storage Queue provisioned via Crossplane (StorageQueue claim hello-world-api-queue in namespace hello-world-api-go).
+spec:
+  type: azure-storage-queue
+  lifecycle: experimental
+  owner: group:default/guests
