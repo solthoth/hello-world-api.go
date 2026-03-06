@@ -58,7 +58,8 @@ func main() {
 		}
 
 		if _, err = queueClient.EnqueueMessage(context.Background(), string(b), nil); err != nil {
-			c.JSON(http.StatusInternalServerError, gin.H{"error": "failed to enqueue message"})
+			log.Printf("EnqueueMessage error: %v", err)
+			c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
 			return
 		}
 
