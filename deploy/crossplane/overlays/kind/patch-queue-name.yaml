@@ -1,0 +1,8 @@
+apiVersion: platform.solthoth.io/v1alpha1
+kind: StorageQueue
+metadata:
+  name: hello-world-api-queue
+  namespace: hello-world-api-go
+spec:
+  parameters:
+    queueName: hello-world-api-queue-kind-queue
